@@ -1,2 +1,12 @@
 # vehicle-tracker-full-cycle-immersion
 Repositório destinado a uma aplicação com micro-serviços  simulando uma plataforma de rastreamento veicular
+
+# Tecnologias
+- TypeScript/JavaScript
+- NestJS
+- Prisma ORM
+- MongoDB
+- Google Maps API
+
+# Temporário
+- Iniciando o nest: npm run start:dev
