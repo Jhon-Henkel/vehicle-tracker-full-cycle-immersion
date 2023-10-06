@@ -10,3 +10,4 @@ Repositório destinado a uma aplicação com micro-serviços  simulando uma plat
 
 # Temporário
 - Iniciando o nest: npm run start:dev
+- criando tablelas mongo: npx prisma generate
