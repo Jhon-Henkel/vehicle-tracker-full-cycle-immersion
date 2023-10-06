@@ -1,7 +1,7 @@
-FROM node:20-slim
+FROM node:lts
 
 WORKDIR /home/node/app
 
-USER node
+RUN apt-get update -y && apt-get install -y openssl
 
 CMD [ "tail", "-f", "/dev/null" ]
