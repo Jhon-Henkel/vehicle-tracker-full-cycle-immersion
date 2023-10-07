@@ -9,16 +9,13 @@ services:
     volumes:
       - .:/home/node/app
   
-  db: 
-    container_name: db
-    image: bitnami/mongodb:5.0.17
-    volumes:
-      - mongodb_data:/bitnami/mongodb
+  db:
+    build: ./db
     environment:
-      MONGODB_PASSWORD: root
-      MONGODB_REPLICA_SET_MODE: primary
-      MONGODB_REPLICA_SET_KEY: 123456
-      MONGODB_DATABASE: nest
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_REPLICA_HOST: db
+    volumes:
+       - mongodb_data:/data/db
 
 volumes:
   mongodb_data:
