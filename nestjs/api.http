@@ -14,4 +14,7 @@ Content-Type: application/json
 }
 
 ### Get Place Id Maps
-GET http://localhost:3000/places?text=av felipe schmidt, braço do norte, 1000
+GET http://localhost:3000/places?text=av felipe schmidt, braço do norte, 100
+
+### Get directions from two places
+GET http://localhost:3000/directions?originId=EkhBdi4gRmVsaXBlIFNjaG1pZHQsIDEwMDAgLSBJbnNzLCBCcmHDp28gZG8gTm9ydGUgLSBTQywgODg3NTAtMDAwLCBCcmFzaWwiMRIvChQKEgmz5cgUcBAhlRGSN14rsM60oxDoByoUChIJybQuy2YQIZURiWBfknZG4y8&destinationId=EkxBdi4gRmVsaXBlIFNjaG1pZHQsIDEwMCAtIFZpbGEgTm92YSwgQnJhw6dvIGRvIE5vcnRlIC0gU0MsIDg4NzUwLTAwMCwgQnJhc2lsIjASLgoUChIJ055DpHYQIZUR7LLGpFNvXsoQZCoUChIJybQuy2YQIZURiWBfknZG4y8 
