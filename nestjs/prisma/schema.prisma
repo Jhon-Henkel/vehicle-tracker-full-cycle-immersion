@@ -25,7 +25,7 @@ model Route {
 
 type Place {
   name String
-  coord Coord
+  location Coord
 }
 
 type Coord {
