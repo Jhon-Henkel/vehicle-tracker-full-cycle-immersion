@@ -12,3 +12,6 @@ Content-Type: application/json
     "source_id": "1",
     "destination_id": "2"
 }
+
+### Get Place Id Maps
+GET http://localhost:3000/places?text=av felipe schmidt, braço do norte, 1000
