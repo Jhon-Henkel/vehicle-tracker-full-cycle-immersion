@@ -9,8 +9,8 @@ Content-Type: application/json
 
 {
     "name": "testRoute",
-    "source_id": "1",
-    "destination_id": "2"
+    "source_id": "EkhBdi4gRmVsaXBlIFNjaG1pZHQsIDEwMDAgLSBJbnNzLCBCcmHDp28gZG8gTm9ydGUgLSBTQywgODg3NTAtMDAwLCBCcmFzaWwiMRIvChQKEgmz5cgUcBAhlRGSN14rsM60oxDoByoUChIJybQuy2YQIZURiWBfknZG4y8",
+    "destination_id": "EkxBdi4gRmVsaXBlIFNjaG1pZHQsIDEwMCAtIFZpbGEgTm92YSwgQnJhw6dvIGRvIE5vcnRlIC0gU0MsIDg4NzUwLTAwMCwgQnJhc2lsIjASLgoUChIJ055DpHYQIZUR7LLGpFNvXsoQZCoUChIJybQuy2YQIZURiWBfknZG4y8"
 }
 
 ### Get Place Id Maps
