@@ -18,4 +18,7 @@ Repositório destinado a uma aplicação com micro-serviços  simulando uma plat
 - acessando o banco via web: npx prisma studio
 
 ### Next
+- Paginas:
+    - new-route
+    - driver
 - Iniciando o next: npm run dev
