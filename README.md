@@ -7,8 +7,15 @@ Repositório destinado a uma aplicação com micro-serviços  simulando uma plat
 - Prisma ORM
 - MongoDB
 - Google Maps API
+- React
+- React Server Components
+- NextJS
 
 # Temporário
+### Nest
 - Iniciando o nest: npm run start:dev
 - criando tablelas mongo: npx prisma generate
 - acessando o banco via web: npx prisma studio
+
+### Next
+- Iniciando o next: npm run dev
