@@ -4,6 +4,7 @@ import { FormEvent, useRef, useState } from "react"
 import { useMap } from "../hooks/useMap"
 
 export function NewRoutePage() {
+    const nestBaseUrl = process.env.NEXT_PUBLIC_NEST_BASE_URL
     const mapContainerRef = useRef<HTMLDivElement>(null)
     const map = useMap(mapContainerRef)
     const [directionsData, setDirectionsData] = useState<DirectionsResponseData & {request: any}>()
@@ -13,8 +14,8 @@ export function NewRoutePage() {
         const source = (document.getElementById('source') as HTMLInputElement).value
         const destination = (document.getElementById('destination') as HTMLInputElement).value
         const [sourceResponse, destinationResponse] = await Promise.all([
-            fetch(`http://localhost:3000/places?text=${source}`),
-            fetch(`http://localhost:3000/places?text=${destination}`)
+            fetch(`${nestBaseUrl}/places?text=${source}`),
+            fetch(`${nestBaseUrl}/places?text=${destination}`)
         ])
         const [sourcePlace, destinationPlace]: FindPlaceFromTextResponseData[] = await Promise.all([
             sourceResponse.json(),
@@ -31,7 +32,7 @@ export function NewRoutePage() {
         const placeSourceId = sourcePlace.candidates[0].place_id
         const placeDestinationId = destinationPlace.candidates[0].place_id
         const directionsResponse = await fetch(
-            `http://localhost:3000/directions?originId=${placeSourceId}&destinationId=${placeDestinationId}`
+            `${nestBaseUrl}/directions?originId=${placeSourceId}&destinationId=${placeDestinationId}`
         )
         const directionsData: DirectionsResponseData & {request: any} = await directionsResponse.json()
         setDirectionsData(directionsData)
@@ -53,7 +54,7 @@ export function NewRoutePage() {
     async function createRoute() {
         const startAddress = directionsData!.routes[0].legs[0].start_address
         const endAddress = directionsData!.routes[0].legs[0].end_address
-        const response = await fetch('http://localhost:3000/routes', {
+        const response = await fetch(`${nestBaseUrl}/routes`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

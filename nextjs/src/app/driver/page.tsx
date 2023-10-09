@@ -6,13 +6,14 @@ import { fetcher } from "../utils/http"
 import { Route } from "../utils/model"
 
 export function DriverPage() {
+    const nestBaseUrl = process.env.NEXT_PUBLIC_NEST_BASE_URL
     const mapContainerRef = useRef<HTMLDivElement>(null)
     const map = useMap(mapContainerRef)
-    const {data: routes, error, isLoading} = useSWR<Route[]>('http://localhost:3000/routes', fetcher, {fallbackData: []})
+    const {data: routes, error, isLoading} = useSWR<Route[]>(`${nestBaseUrl}/routes`, fetcher, {fallbackData: []})
 
     async function startRoute() {
         const routeId = (document.getElementById('routes') as HTMLSelectElement).value
-        const response = await fetch(`http://localhost:3000/routes/${routeId}`)
+        const response = await fetch(`${nestBaseUrl}/routes/${routeId}`)
         const route: Route = await response.json()
         map?.removeAllRoutes()
         await map?.addRouteWithIcons({
