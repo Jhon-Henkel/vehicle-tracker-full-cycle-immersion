@@ -10,6 +10,13 @@ Repositório destinado a uma aplicação com micro-serviços  simulando uma plat
 - React
 - React Server Components
 - NextJS
+- Route Handler
+- Material UI
+- Socket.io
+- Kafka
+- Docker
+- Bulljs no NestJS
+- Prometheus
 
 # Temporário
 ### Nest
