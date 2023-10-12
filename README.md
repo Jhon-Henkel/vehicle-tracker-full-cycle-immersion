@@ -35,3 +35,6 @@ Adicionar a linha abaixo no seu hosts (apenas linux e mac):
     - new-route
     - driver
 - Iniciando o next: npm run dev
+
+### Kafka
+- acesso pelo host http://localhost:9021/clusters
