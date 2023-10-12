@@ -5,6 +5,8 @@ import useSWR from "swr"
 import { fetcher } from "../utils/http"
 import { Route } from "../utils/model"
 import { socket } from "../utils/socket-io"
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
+import { Button, NativeSelect, Typography } from "@mui/material"
 
 export function DriverPage() {
     const nestBaseUrl = process.env.NEXT_PUBLIC_NEST_BASE_URL
@@ -57,19 +59,19 @@ export function DriverPage() {
     }
 
     return (
-        <div style={{display: "flex", flexDirection: "row", height: "100%", width: "100%"}}>
-            <div>
-                <h1>Minha viagem</h1>
+        <Grid2 container sx={{ display: 'flex', flex: 1 }}>
+            <Grid2 xs={4} px={2}>
+                <Typography variant="h4">Minha viagem</Typography>
                 <div style={{display:'flex', flexDirection: 'column'}}>
-                    <select id="routes">
+                    <NativeSelect id="routes">
                         {isLoading && <option>Carregando rotas...</option>}
                         {routes!.map((route) => (<option key={route.id} value={route.id}>{route.name}</option>))}
-                    </select>
-                    <button type="submit" onClick={startRoute}>Iniciar viagem</button>
+                    </NativeSelect>
+                    <Button variant="contained" onClick={startRoute} fullWidth>Iniciar viagem</Button>
                 </div>
-            </div>
-            <div id="map" style={{height: "100%", width: "100%"}} ref={mapContainerRef}></div>
-        </div>
+            </Grid2>
+            <Grid2 id="map" xs={8} ref={mapContainerRef}></Grid2>
+        </Grid2>
     )
 }
 
