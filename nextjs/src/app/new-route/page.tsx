@@ -6,7 +6,7 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
 import { Alert, Button, Card, CardActions, CardContent, List, ListItem, ListItemText, Snackbar, TextField, Typography } from "@mui/material"
 
 export function NewRoutePage() {
-    const nestBaseUrl = process.env.NEXT_PUBLIC_NEST_BASE_URL
+    const nestBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
     const mapContainerRef = useRef<HTMLDivElement>(null)
     const map = useMap(mapContainerRef)
     const [directionsData, setDirectionsData] = useState<DirectionsResponseData & {request: any}>()

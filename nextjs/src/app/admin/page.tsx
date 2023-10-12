@@ -5,7 +5,7 @@ import { Route } from "../utils/model"
 import { socket } from "../utils/socket-io"
 
 export function AdminPage() {
-    const nestBaseUrl = process.env.NEXT_PUBLIC_NEST_BASE_URL
+    const nestBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
     const mapContainerRef = useRef<HTMLDivElement>(null)
     const map = useMap(mapContainerRef)
     

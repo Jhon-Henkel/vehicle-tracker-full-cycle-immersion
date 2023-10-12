@@ -10,7 +10,7 @@ export type RouteSelectProps = NativeSelectProps & {
 
 export function RouteSelect(props: RouteSelectProps) {
   const {data: routes, error, isLoading,} = useSWR<Route[]>(
-    `${process.env.NEXT_PUBLIC_NEST_BASE_URL}/routes`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/routes`,
     fetcher,
     {fallbackData: []}
   )

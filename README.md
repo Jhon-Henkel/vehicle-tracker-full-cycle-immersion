@@ -19,6 +19,12 @@ Repositório destinado a uma aplicação com micro-serviços  simulando uma plat
 - Prometheus
 
 # Temporário
+Adicionar a linha abaixo no seu hosts (apenas linux e mac):
+
+```
+127.0.0.1 host.docker.internal
+```
+
 ### Nest
 - Iniciando o nest: npm run start:dev
 - criando tablelas mongo: npx prisma generate
