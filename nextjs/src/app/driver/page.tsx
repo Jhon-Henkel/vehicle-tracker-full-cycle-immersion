@@ -1,18 +1,16 @@
 'use client'
 import { useRef, useEffect } from "react"
 import { useMap } from "../hooks/useMap"
-import useSWR from "swr"
-import { fetcher } from "../utils/http"
 import { Route } from "../utils/model"
 import { socket } from "../utils/socket-io"
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
-import { Button, NativeSelect, Typography } from "@mui/material"
+import { Button, Typography } from "@mui/material"
+import { RouteSelect } from "../components/RouteSelect"
 
 export function DriverPage() {
     const nestBaseUrl = process.env.NEXT_PUBLIC_NEST_BASE_URL
     const mapContainerRef = useRef<HTMLDivElement>(null)
     const map = useMap(mapContainerRef)
-    const {data: routes, error, isLoading} = useSWR<Route[]>(`${nestBaseUrl}/routes`, fetcher, {fallbackData: []})
     
     useEffect(() => {
         socket.connect()
@@ -63,10 +61,7 @@ export function DriverPage() {
             <Grid2 xs={4} px={2}>
                 <Typography variant="h4">Minha viagem</Typography>
                 <div style={{display:'flex', flexDirection: 'column'}}>
-                    <NativeSelect id="routes">
-                        {isLoading && <option>Carregando rotas...</option>}
-                        {routes!.map((route) => (<option key={route.id} value={route.id}>{route.name}</option>))}
-                    </NativeSelect>
+                    <RouteSelect id="routes" fullWidth />
                     <Button variant="contained" onClick={startRoute} fullWidth>Iniciar viagem</Button>
                 </div>
             </Grid2>
