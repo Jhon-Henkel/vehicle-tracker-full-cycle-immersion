@@ -2,12 +2,15 @@
 import type { DirectionsResponseData, FindPlaceFromTextResponseData } from "@googlemaps/google-maps-services-js"
 import { FormEvent, useRef, useState } from "react"
 import { useMap } from "../hooks/useMap"
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
+import { Alert, Button, Card, CardActions, CardContent, List, ListItem, ListItemText, Snackbar, TextField, Typography } from "@mui/material"
 
 export function NewRoutePage() {
     const nestBaseUrl = process.env.NEXT_PUBLIC_NEST_BASE_URL
     const mapContainerRef = useRef<HTMLDivElement>(null)
     const map = useMap(mapContainerRef)
     const [directionsData, setDirectionsData] = useState<DirectionsResponseData & {request: any}>()
+    const [open, setOpen] = useState(false)
 
     async function searchPlaces(event: FormEvent) {
         event.preventDefault()
@@ -66,33 +69,53 @@ export function NewRoutePage() {
             })
         })
         const route = await response.json()
+        setOpen(true)
     }
 
     return (
-        <div style={{display: "flex", flexDirection: "row", height: "100%", width: "100%"}}>
-            <div>
-                <h1>Nova Rota</h1>
-                <form style={{display:'flex', flexDirection: 'column'}} onSubmit={searchPlaces}>
-                    <div>
-                        <input id="source" type="text" placeholder="Origem" />
-                    </div>
-                    <div>
-                        <input id="destination" type="text" placeholder="Destino" />
-                    </div>
-                    <button type="submit">Pesquisar</button>
+        <Grid2 container sx={{ display: 'flex', flex: 1 }}>
+            <Grid2 xs={4} px={2}>
+                <Typography variant="h4">Nova Rota</Typography>
+                <form onSubmit={searchPlaces}>
+                    <TextField id="source" label="Origem" fullWidth />
+                    <TextField id="destination" label="Destino" fullWidth sx={{ mt: 1 }} />
+                    <Button variant="contained" type="submit" fullWidth sx={{ mt: 1 }}>
+                        Pesquisar
+                    </Button>
                 </form>
                 {directionsData && (
-                    <ul>
-                        <li>Origem {directionsData.routes[0].legs[0].start_address}</li>
-                        <li>Destino {directionsData.routes[0].legs[0].end_address}</li>
-                        <li>
-                            <button onClick={createRoute}>Criar rota</button>
-                        </li>
-                    </ul>
+                    <Card sx={{ mt: 1 }}>
+                        <CardContent>
+                            <List>
+                                <ListItem>
+                                    <ListItemText primary={"Origem"} secondary={directionsData?.routes[0]!.legs[0]!.start_address} />
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText primary={"Destino"} secondary={directionsData?.routes[0]!.legs[0]!.end_address} />
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText primary={"Duração"} secondary={directionsData?.routes[0]!.legs[0]!.duration.text} />
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText primary={"Distância"} secondary={directionsData?.routes[0]!.legs[0]!.distance.text} />
+                                </ListItem>
+                            </List>
+                        </CardContent>
+                        <CardActions sx={{ display: 'fles', justifyContent: 'center'}}>
+                            <Button type="button" variant="contained" onClick={createRoute}>
+                                Adicionar Rota
+                            </Button>
+                        </CardActions>
+                    </Card>
                 )}
-            </div>
-            <div id="map" style={{height: "100%", width: "100%"}} ref={mapContainerRef}></div>
-        </div>
+            </Grid2>
+            <Grid2 id="map" xs={8} ref={mapContainerRef}></Grid2>
+            <Snackbar open={open} autoHideDuration={3000} onAbort={() => setOpen(false)}>
+                <Alert onClose={() => setOpen(false)} severity="success">
+                    Rota criada com sucesso!
+                </Alert>
+            </Snackbar>
+        </Grid2>
     )
 }
 
