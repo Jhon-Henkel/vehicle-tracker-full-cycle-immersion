@@ -7,7 +7,8 @@ type CustomTime time.Time
 const layout = "2006-01-02T15:04"
 
 func (ct *CustomTime) UnmarshalJSON(b []byte) (err error) {
-	t,err := time.Parse(layout, string(b))
+	s := string(b)
+	t, err := time.Parse(layout, s[1:len(s)-1])
 	if err != nil {
 		return err
 	}
