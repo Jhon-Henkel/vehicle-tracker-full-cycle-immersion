@@ -21,7 +21,7 @@ func main() {
 	defer db.Close()
 
 	msgChan := make(chan *ckafka.Message)
-	topics := []string{"routes"}
+	topics := []string{"route"}
 	servers := "host.docker.internal:9094"
 	go kafka.Consumer(topics, servers, msgChan)
 
