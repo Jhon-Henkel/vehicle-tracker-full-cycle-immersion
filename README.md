@@ -38,3 +38,10 @@ Adicionar a linha abaixo no seu hosts (apenas linux e mac):
 
 ### Kafka
 - acesso pelo host http://localhost:9021/clusters
+
+### GO
+- Criar tableas no mysql do GO:
+    ```
+    CREATE TABLE routes (id VARCHAR(36) PRIMARY KEY, name VARCHAR(255) NOT NULL, distance FLOAT NOT NULL, status VARCHAR(255) NOT NULL, freight_price FLOAT, started_at DATETIME, finished_at DATETIME);
+    ```
+- Iniciando o go: go run cmd/freight/main.go
